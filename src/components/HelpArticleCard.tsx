@@ -15,7 +15,7 @@ export const searchAnalytics = provideSearchAnalytics({
   businessId: businessId
 })
 
-const CustomCard = ({
+const HelpArticleCard = ({
     result,
     //replace the interface FAQ with the typescript interface of your vertical
   }: CardProps<FAQ>) => {
@@ -30,7 +30,7 @@ const CustomCard = ({
     }
 
     //replace below with the appropriate vertical key
-    const verticalKey = 'faqs'
+    const verticalKey = 'faq'
     
     //analytics configuration for the card
     const queryId = useSearchState((state)=>state.query.queryId) || "";
@@ -93,4 +93,4 @@ const CustomCard = ({
     )
 };
 
-export default CustomCard;
+export default HelpArticleCard;

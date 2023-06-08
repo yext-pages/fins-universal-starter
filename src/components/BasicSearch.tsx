@@ -25,9 +25,11 @@ const BasicSearch = () => {
           </h1>
           <SearchBar placeholder="Search"/>
           <VerticalNav />
-          {currentVertical ? <VerticalSearch/> : <UniversalSearch />}
+          {currentVertical === "faqs" ? (<VerticalSearch/>) : 
+          //comment out below to add a new vertical
+          //  currentVertical === "REPLACE ME" ? (<REPLACE_ME/>) :
+           (<UniversalSearch />)}
         </div>
-        
       </div>
   );
 };
