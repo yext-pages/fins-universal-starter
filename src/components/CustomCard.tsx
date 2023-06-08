@@ -4,7 +4,7 @@ import * as React from "react";
 import { CardProps } from "@yext/search-ui-react";
 import { provideSearchAnalytics } from "@yext/analytics";
 
-import FAQ from "../types/faqs"; //replace with the vertical type this custom card applies to
+import FAQ from "../types/faqs"; //replace with the vertical typescript interface this custom card applies to
 
 import { experienceKey, experienceVersion, businessId } from "../common/consts";
 import { useSearchState } from "@yext/search-headless-react";
@@ -17,6 +17,7 @@ export const searchAnalytics = provideSearchAnalytics({
 
 const CustomCard = ({
     result,
+    //replace the interface FAQ with the typescript interface of your vertical
   }: CardProps<FAQ>) => {
     //pull in the relevant fields from your entity to display on the card 
     const data: any = {
@@ -27,6 +28,9 @@ const CustomCard = ({
         cta1: result.rawData.c_primaryCTA,
         cta2: result.rawData.c_secondaryCTA
     }
+
+    //replace below with the appropriate vertical key
+    const verticalKey = 'faq'
     
     //analytics configuration for the card
     const queryId = useSearchState((state)=>state.query.queryId) || "";
@@ -34,7 +38,7 @@ const CustomCard = ({
         searchAnalytics.report({
             type: "CTA_CLICK",
             entityId: id,
-            verticalKey: "faqs",
+            verticalKey: verticalKey,
             searcher: "VERTICAL",
             queryId: queryId,
             ctaLabel: label
@@ -44,7 +48,7 @@ const CustomCard = ({
         searchAnalytics.report({
             type: "TITLE_CLICK",
             entityId: id,
-            verticalKey: "faqs",
+            verticalKey: verticalKey,
             searcher: "VERTICAL",
             queryId: queryId,
         })

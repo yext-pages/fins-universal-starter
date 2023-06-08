@@ -55,8 +55,8 @@ const VerticalSearch = () => {
               </>
             )}
           {mostRecentSearch && resultsCount === 0 && (
-            // Provide a no results message for searches that return no results 
             <div>
+              {/* provide a no results message for searches that return no results  */}
               <p>
                 The search
                 <span className="mx-1 font-semibold">{mostRecentSearch}</span>

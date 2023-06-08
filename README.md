@@ -49,7 +49,9 @@ In practice, development builds (via `npm run dev`) and production builds compil
 
 `yext init` - Authenticates the Yext CLI with your Yext account
 
-`yext pages generate-test-data` - pull an example set of `localData` from your account. This command is packaged within `npm run dev'.
+`yext types generate search src/types --experienceKey [INSERT EXPERIENCE KEY]` - Generates a new Typescript interface for each vertical in your Search experience. 
+
+`yext pages generate-test-data` - Pulls an example set of `localData` from your account. This command is packaged within `npm run dev'.
 
 `npm run build` - Runs a production build against your `localData`: part one of `npm run build:serve`
 
@@ -102,6 +104,10 @@ NOTE: A `features.json` file will automatically be generated during CI build for
 NOTE: After changing your stream definitions, you should rerun `yext pages generate` and `yext pages generate-text-data` to ensure your local build pulls in the required data from the Knowledge Graph
 
 ### src
+
+### common
+
+This is where all your common constants _may_ live. This folder is not required and you can set up your own folder structure for storing constants any way you'd like. It is best practice that you 
 
 #### components
 
