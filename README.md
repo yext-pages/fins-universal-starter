@@ -1,10 +1,6 @@
 # starter-search-basic-react
-Starter repository for Basic Search built on Search UI React
 
-EDIT BELOW
-This repository provides a basic example of how to start developing a React site on the Yext Pages system.
-
-Follow this Track on Hitchhikers to build a full website with Search, Directories, Analytics and more based off of this starter repo: https://hitchhikers.yext.com/tracks/pages-development/
+This repository provides a basic example of how to start developing a React Search experiences on the Yext Pages system. This Basic Search Starter is built on top of the built-in FAQs entity and contains both Universal and Vertical Search.
 
 ## Getting Started
 
@@ -21,9 +17,10 @@ Follow this Track on Hitchhikers to build a full website with Search, Directorie
 ### Clone this repo and install dependencies
 
 ```shell
-git clone https://github.com/yext/pages-starter-react-locations
-cd pages-starter-react-locations
+git clone https://github.com/YextSolutions/starter-search-basic-react.git
+cd starter-search-basic-react
 npm install
+npm i @yext/search-ui-react@1.3.0-beta.1
 ```
 
 ### Recommended Development Flow
@@ -36,22 +33,23 @@ npm run dev
 
 This command will start a Vite-powered dev server that will enable hot-reloading. Additionally, the command will generate a `localData` directory that contains a subset of your Knowledge Graph data. This command is automatically in "dynamic" mode, which means it will pull data updates automatically from your Knowledge graph, so real-time data changes in your Yext account will be reflected in your local dev site.
 
-NOTE: Whenever you make changes to your stream definitions, you must re-run `npm run dev` for the system to update the `features.json` and the required entities to power your site. 
+NOTE: Whenever you make changes to your stream definitions, you must re-run `npm run dev` for the system to update the `features.json` and the required entities to power your site.
 
 _Before committing_ your code, we recommend running the following command:
+
 ```
 npm run build:serve
-``` 
+```
 
 This command will generate a production build of your site, so you can ensure there are no build errors or unexpected behavior. This build step replicates the production build environment used in the Yext system, and serves your data at `localhost:8000`.
 
-In practice, development builds (via `npm run dev`) and production builds compile and bundle assets differently. For local development, ES Modules are loaded directly by the browser, allowing fast iteration during local development and also allows for hot module replacement (HMR). Other things like CSS are also loaded directly by the browser, including linking to sourcemaps. During a production build all of the different files are compiled (via ESBuild for jsx/tsx) and minified, creating assets as small as possible so that the final html files load quickly when served to a user. Tree-shaking also occurs during the build step, in which any unused dependencies are removed from your final build. 
+In practice, development builds (via `npm run dev`) and production builds compile and bundle assets differently. For local development, ES Modules are loaded directly by the browser, allowing fast iteration during local development and also allows for hot module replacement (HMR). Other things like CSS are also loaded directly by the browser, including linking to sourcemaps. During a production build all of the different files are compiled (via ESBuild for jsx/tsx) and minified, creating assets as small as possible so that the final html files load quickly when served to a user. Tree-shaking also occurs during the build step, in which any unused dependencies are removed from your final build.
 
 ### Other Useful commands
 
 `yext init` - Authenticates the Yext CLI with your Yext account
 
-`yext pages generate-test-data` - pull an example set of `localData` from your account. This command is packaged within `npm run dev'. 
+`yext pages generate-test-data` - pull an example set of `localData` from your account. This command is packaged within `npm run dev'.
 
 `npm run build` - Runs a production build against your `localData`: part one of `npm run build:serve`
 
@@ -71,14 +69,22 @@ root
 └───src
 │   │   index.css
 │   │
+│   └───common
+│       │   consts.ts
+│       │   verticals.ts
+│   │
 │   └───components
+│       │   BasicSearch.tsx
+│       │   CustomCard.tsx
+│       │   UniversalSearch.tsx
+│       │   VerticalNav.tsx
+│       │   VerticalSearch.tsx
 │   │
 │   └───templates
-│       │   location.tsx
-│       │   robots.ts
-│       │   static.tsx
+│       │   search.tsx
 │   │
 │   └───types
+│       │   faqs.ts
 ```
 
 ### localData
@@ -99,7 +105,17 @@ NOTE: After changing your stream definitions, you should rerun `yext pages gener
 
 #### components
 
-This is where all of your custom components _may_ live. This folder is not required and you can set up your own custom folder structure for your own components in any way you'd like, as long as it lives in the `src` directory.
+This is where all of your custom components _may_ live. This folder is not required and you can set up your own custom folder structure for your own components in any way you'd like, as long as it lives in the `src` directory. This repository contains the following components:
+1. BasicSearch.tsx
+   The BasicSearch component is a basic search functionality with a title, search bar, and vertical navigation menu. It retrieves the currently selected vertical and renders either the VerticalSearch component for the selected vertical or the UniversalSearch component for a search query. It offers a simple user interface for conducting searches within specific verticals or across all verticals.
+2. CustomCard.tsx
+   The CustomCard component renders a styled card that displays information about your entity. It extracts data from the relevant fields you specify and displays the information on the card along with clickable CTAs. The component also includes basix analytics tracking for click events on the card's title and CTA buttons.
+3. UniversalSearch.tsx
+   The UniversalSearch component allows users to search across multiple verticals. It includes the SpellCheck component as well as a message indicating when a search query does not match any results in any of the configured verticals. You must configure the vertical in the verticalConfigMap prop of the UniversalSearch component for it to be included in Universal Search. 
+4. VerticalNav.tsx
+   If you would like to configure both Universal and Vertical search for your Search experience, you will need to configure the VerticalNav component. This component allows users to switch between the universal and subsequent vertical tabs while conducting a search.
+5. VerticalSearch.tsx
+   The VerticalSearch component represents the search functionality with a specified vertical. It includes the SpellCheck, Facets, and Pagination components. It also includes a no results message and shows result count. 
 
 #### templates
 

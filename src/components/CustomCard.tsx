@@ -28,7 +28,7 @@ const CustomCard = ({
         cta2: result.rawData.c_secondaryCTA
     }
     
-    //analytics 
+    //analytics configuration for the card
     const queryId = useSearchState((state)=>state.query.queryId) || "";
     const fireClick = (id:string,label:string)=>{
         searchAnalytics.report({

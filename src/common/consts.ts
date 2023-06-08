@@ -1,4 +1,4 @@
-import { UniversalLimit, provideHeadless } from "@yext/search-headless-react";
+import { UniversalLimit } from "@yext/search-headless-react";
 
 //Replace with Your Yext Business ID
 export const businessId: number = 4032765;
