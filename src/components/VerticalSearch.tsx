@@ -5,8 +5,9 @@ import {
   VerticalResults,
   SpellCheck,
   ResultsCount,
-  Pagination,
-  StandardFacets,
+  Pagination, 
+  Facets,
+  StandardFacet
   } from "@yext/search-ui-react";
 
 import { 
@@ -34,7 +35,16 @@ const VerticalSearch = () => {
               <div className="flex">
                   <div className="mr-5 w-56 shrink-0">
                     <div className="flex flex-col rounded border bg-zinc-100 p-4 shadow-sm">
-                        <StandardFacets />
+                        <Facets>
+                          <StandardFacet
+                          fieldId="c_category"
+                          transformOptions={(options) =>
+                            [...options].sort((a,b) =>
+                              a.displayName.localeCompare(b.displayName))
+                          }
+                          label="FAQ Category"
+                          />
+                        </Facets>
                     </div>
                   </div>
                   <VerticalResults
