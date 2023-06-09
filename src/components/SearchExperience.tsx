@@ -1,11 +1,11 @@
-// src/components/BasicSearch.tsx
+// src/components/SearchExperience.tsx
 
 import * as React from "react";
 import {
   SearchBar
   } from "@yext/search-ui-react";
 
-import { 
+import {
   useSearchState
   } from "@yext/search-headless-react";
 
@@ -13,8 +13,8 @@ import UniversalSearch from "./UniversalSearch";
 import VerticalSearch from "./VerticalSearch";
 import VerticalNav from "./VerticalNav";
 
-const BasicSearch = () => {
-  //retrieves the current vertical key 
+const SearchExperience = () => {
+  //retrieves the current vertical key
   const currentVertical = useSearchState((state) => state.vertical.verticalKey) ?? "";
 
   return (
@@ -25,7 +25,7 @@ const BasicSearch = () => {
           </h1>
           <SearchBar placeholder="Search"/>
           <VerticalNav />
-          {currentVertical === "faqs" ? (<VerticalSearch/>) : 
+          {currentVertical === "faqs" ? (<VerticalSearch/>) :
           //comment out below to add a new vertical
           //  currentVertical === "REPLACE ME" ? (<REPLACE_ME/>) :
            (<UniversalSearch />)}
@@ -34,4 +34,4 @@ const BasicSearch = () => {
   );
 };
 
-export default BasicSearch;
+export default SearchExperience;

@@ -49,7 +49,7 @@ In practice, development builds (via `npm run dev`) and production builds compil
 
 `yext init` - Authenticates the Yext CLI with your Yext account
 
-`yext types generate search src/types --experienceKey [INSERT EXPERIENCE KEY]` - Generates a new Typescript interface for each vertical in your Search experience. 
+`yext types generate search src/types --experienceKey [INSERT EXPERIENCE KEY]` - Generates a new Typescript interface for each vertical in your Search experience.
 
 `yext pages generate-test-data` - Pulls an example set of `localData` from your account. This command is packaged within `npm run dev'.
 
@@ -76,8 +76,8 @@ root
 │       │   verticals.ts
 │   │
 │   └───components
-│       │   BasicSearch.tsx
-│       │   CustomCard.tsx
+│       │   SearchExperience.tsx
+│       │   Card.tsx
 │       │   UniversalSearch.tsx
 │       │   VerticalNav.tsx
 │       │   VerticalSearch.tsx
@@ -107,21 +107,21 @@ NOTE: After changing your stream definitions, you should rerun `yext pages gener
 
 ### common
 
-This is where all your common constants _may_ live. This folder is not required and you can set up your own folder structure for storing constants any way you'd like. It is best practice that you 
+This is where all your common constants _may_ live. This folder is not required and you can set up your own folder structure for storing constants any way you'd like. It is best practice that you
 
 #### components
 
 This is where all of your custom components _may_ live. This folder is not required and you can set up your own custom folder structure for your own components in any way you'd like, as long as it lives in the `src` directory. This repository contains the following components:
-1. BasicSearch.tsx
-   The BasicSearch component is a basic search functionality with a title, search bar, and vertical navigation menu. It retrieves the currently selected vertical and renders either the VerticalSearch component for the selected vertical or the UniversalSearch component for a search query. It offers a simple user interface for conducting searches within specific verticals or across all verticals.
-2. CustomCard.tsx
-   The CustomCard component renders a styled card that displays information about your entity. It extracts data from the relevant fields you specify and displays the information on the card along with clickable CTAs. The component also includes basix analytics tracking for click events on the card's title and CTA buttons.
+1. SearchExperience.tsx
+   The SearchExperience component is a basic search functionality with a title, search bar, and vertical navigation menu. It retrieves the currently selected vertical and renders either the VerticalSearch component for the selected vertical or the UniversalSearch component for a search query. It offers a simple user interface for conducting searches within specific verticals or across all verticals.
+2. Card.tsx
+   The Card component renders a styled card that displays information about your entity. It extracts data from the relevant fields you specify and displays the information on the card along with clickable CTAs. The component also includes basic analytics tracking for click events on the card's title and CTA buttons.
 3. UniversalSearch.tsx
-   The UniversalSearch component allows users to search across multiple verticals. It includes the SpellCheck component as well as a message indicating when a search query does not match any results in any of the configured verticals. You must configure the vertical in the verticalConfigMap prop of the UniversalSearch component for it to be included in Universal Search. 
+   The UniversalSearch component allows users to search across multiple verticals. It includes the SpellCheck component as well as a message indicating when a search query does not match any results in any of the configured verticals. You must configure the vertical in the verticalConfigMap prop of the UniversalSearch component for it to be included in Universal Search.
 4. VerticalNav.tsx
    If you would like to configure both Universal and Vertical search for your Search experience, you will need to configure the VerticalNav component. This component allows users to switch between the universal and subsequent vertical tabs while conducting a search.
 5. VerticalSearch.tsx
-   The VerticalSearch component represents the search functionality with a specified vertical. It includes the SpellCheck, Facets, and Pagination components. It also includes a no results message and shows result count. 
+   The VerticalSearch component represents the search functionality with a specified vertical. It includes the SpellCheck, Facets, and Pagination components. It also includes a no results message and shows result count.
 
 #### templates
 

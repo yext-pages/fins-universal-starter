@@ -5,16 +5,16 @@ import {
   VerticalResults,
   SpellCheck,
   ResultsCount,
-  Pagination, 
+  Pagination,
   Facets,
   StandardFacet
   } from "@yext/search-ui-react";
 
-import { 
+import {
   useSearchState
   } from "@yext/search-headless-react";
 
-import CustomCard from "./CustomCard";
+import Card from "./Card";
 
 const VerticalSearch = () => {
 
@@ -48,7 +48,7 @@ const VerticalSearch = () => {
                     </div>
                   </div>
                   <VerticalResults
-                  CardComponent={CustomCard}
+                  CardComponent={Card}
                   displayAllOnNoResults={false}
                   />
               </div>
@@ -64,12 +64,12 @@ const VerticalSearch = () => {
               </p>
             </div>
           )}
-          <Pagination 
+          <Pagination
             customCssClasses={{
               icon: "text-stone-900",
               label: "text-stone-900",
               selectedLabel: "text-blue-700 border-blue-700 bg-blue-100",
-            }}/>   
+            }}/>
       </div>
   );
 };

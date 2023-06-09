@@ -6,7 +6,7 @@ import {
   SpellCheck
   } from "@yext/search-ui-react";
 
-import CustomCard from "./CustomCard";
+import Card from "./Card";
 import { useSearchActions, useSearchState} from "@yext/search-headless-react";
 import { UNIVERSAL_LIMITS } from "../common/consts";
 
@@ -24,16 +24,16 @@ const UniversalSearch = () => {
           <div className="spell-check">
             <SpellCheck/>
           </div>
-            <UniversalResults 
+            <UniversalResults
               verticalConfigMap={{
                   faqs: {
                       label: "FAQs",
-                      CardComponent: CustomCard
+                      CardComponent: Card
                   },
                 // uncomment below to add an additonal vertical configuration
-                //   verticalKey: {
-                //     label: "Vertical Name",
-                //     CardComponent: CustomCard
+                //   [REPLACE_ME_VERTICAL_KEY]: {
+                //     label: "REPLACE ME VERTICAL NAME",
+                //     CardComponent: REPLACE_ME_VERTICAL_CARD
                 // },
               }}/>
           {mostRecentSearch && universalResultsCount === 0 && (

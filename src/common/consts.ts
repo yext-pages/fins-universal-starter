@@ -1,15 +1,15 @@
 import { UniversalLimit } from "@yext/search-headless-react";
 
 //Replace with Your Yext Business ID
-export const businessId: number = 4032765;
+export const businessId = 4032765;
 //Replace with Your Search Experience API Key
-export const apiKey: string = "90cf8922bb01441f9c69bbedbb57b32e";
-//Replace with Your Search Experience experience key 
-export const experienceKey: string = "search-basic";
+export const apiKey = "90cf8922bb01441f9c69bbedbb57b32e";
+//Replace with Your Search Experience experience key
+export const experienceKey = "search-basic";
 //Replace with Your Search Experience locale
-export const locale: string = "en";
+export const locale = "en";
 //Replace with Your Search Experience versopm
-export const experienceVersion: string = "PRODUCTION";
+export const experienceVersion = "PRODUCTION";
 
 export const additionalQueryParams: any = {
       "source": "search-basic"

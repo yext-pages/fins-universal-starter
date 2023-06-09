@@ -1,3 +1,5 @@
+// src/components/VerticalNav.tsx
+
 import * as React from "react";
 import { verticals } from "../common/verticals";
 import { useSearchActions, useSearchState } from "@yext/search-headless-react";
@@ -12,7 +14,7 @@ const VerticalNav = () => {
       {shownVerticals.map((vertical, value) => {
         const selected = selectedVertical === vertical.key;
         return (
-            <button 
+            <button
                 key={vertical.key ? vertical.key : "universal"}
                 onClick={async () => {
                     if (vertical.key) {
@@ -22,7 +24,7 @@ const VerticalNav = () => {
                     } else {
                         await searchActions.setUniversal();
                         searchActions.executeUniversalQuery();
-                        let params = new URLSearchParams(window.location.search);
+                        const params = new URLSearchParams(window.location.search);
                         params.delete("verticalKey");
                         window.history.pushState({}, "", `?${params.toString()}`);
                     }

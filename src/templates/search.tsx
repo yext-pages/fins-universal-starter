@@ -12,11 +12,10 @@ import {
 import "../index.css";
 import {
   SearchHeadlessProvider,
-  provideHeadless,
-  HeadlessConfig
+  provideHeadless
 } from "@yext/search-headless-react";
 
-import BasicSearch from "../components/BasicSearch";
+import SearchExperience from "../components/SearchExperience";
 
 import {apiKey, experienceKey, locale, experienceVersion} from "../common/consts";
 
@@ -36,11 +35,9 @@ export const getHeadConfig: GetHeadConfig<
 };
 
 export const SEARCHER = provideHeadless({
-  //Replace with Your Search Experience API Key here
   apiKey: apiKey,
   // comment in the verticalKey if you are building a vertical-only search experience
-  // verticalKey: verticalKey,
-  //Replace with Your Search Experience experience key here
+  // verticalKey: "REPLACE_ME_VERTICAL_KEY",
   experienceKey: experienceKey,
   locale: locale,
   experienceVersion: experienceVersion,
@@ -49,7 +46,7 @@ export const SEARCHER = provideHeadless({
 const Search: Template<TemplateRenderProps> = () => {
   return (
     <SearchHeadlessProvider searcher={SEARCHER}>
-     <BasicSearch />
+     <SearchExperience />
     </SearchHeadlessProvider>
   );
 };
