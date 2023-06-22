@@ -14,9 +14,9 @@ import {
   useSearchState
   } from "@yext/search-headless-react";
 
-import Card from "./Card";
+import FaqCard from "./FaqCard";
 
-const VerticalSearch = () => {
+const FaqSearch = () => {
 
     const mostRecentSearch = useSearchState(
         (state) => state.query.mostRecentSearch
@@ -48,7 +48,7 @@ const VerticalSearch = () => {
                     </div>
                   </div>
                   <VerticalResults
-                  CardComponent={Card}
+                  CardComponent={FaqCard}
                   displayAllOnNoResults={false}
                   />
               </div>
@@ -74,4 +74,4 @@ const VerticalSearch = () => {
   );
 };
 
-export default VerticalSearch;
+export default FaqSearch;

@@ -1,7 +1,7 @@
 // src/components/VerticalNav.tsx
 
 import * as React from "react";
-import { verticals } from "../common/verticals";
+import { verticals } from "../../common/verticals";
 import { useSearchActions, useSearchState } from "@yext/search-headless-react";
 import classNames from "classnames";
 

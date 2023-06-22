@@ -19,25 +19,6 @@ export interface ComplexImage {
 	clickthroughUrl?: string,
 }
 
-export enum LinkType {
-	OTHER = "Other",
-	URL = "URL",
-	PHONE = "Phone",
-	EMAIL = "Email",
-}
-
-export interface C_primaryCTA {
-	label?: string,
-	linkType?: LinkType,
-	link?: string,
-}
-
-export interface C_secondaryCTA {
-	label?: string,
-	linkType?: LinkType,
-	link?: string,
-}
-
 export default interface Faq {
 	answer?: string,
 	landingPageUrl?: string,
@@ -47,10 +28,6 @@ export default interface Faq {
 	slug?: string,
 	logo?: ComplexImage,
 	name: string,
-	c_activeOnAnswers?: boolean,
-	c_primaryCTA?: C_primaryCTA,
-	c_secondaryCTA?: C_secondaryCTA,
-	c_category?: string,
 	keywords?: string[],
 	id: string,
 	timezone?: any,

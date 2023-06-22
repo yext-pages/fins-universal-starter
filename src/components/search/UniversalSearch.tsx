@@ -6,9 +6,9 @@ import {
   SpellCheck
   } from "@yext/search-ui-react";
 
-import Card from "./Card";
+import FaqCard from "../faq/FaqCard";
 import { useSearchActions, useSearchState} from "@yext/search-headless-react";
-import { UNIVERSAL_LIMITS } from "../common/consts";
+import { UNIVERSAL_LIMITS } from "../../common/consts";
 
 const UniversalSearch = () => {
   const searchActions = useSearchActions();
@@ -28,7 +28,7 @@ const UniversalSearch = () => {
               verticalConfigMap={{
                   faqs: {
                       label: "FAQs",
-                      CardComponent: Card
+                      CardComponent: FaqCard
                   },
                 // uncomment below to add an additonal vertical configuration
                 //   [REPLACE_ME_VERTICAL_KEY]: {

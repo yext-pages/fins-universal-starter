@@ -15,7 +15,7 @@ import {
   provideHeadless
 } from "@yext/search-headless-react";
 
-import SearchExperience from "../components/SearchExperience";
+import SearchExperience from "../components/search/SearchExperience";
 
 import {apiKey, experienceKey, locale, experienceVersion} from "../common/consts";
 
