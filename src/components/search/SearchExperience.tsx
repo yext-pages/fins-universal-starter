@@ -10,8 +10,12 @@ import {
   } from "@yext/search-headless-react";
 
 import UniversalSearch from "./UniversalSearch";
-import VerticalSearch from "../faq/FaqSearch";
 import VerticalNav from "./VerticalNav";
+import FaqSearch from "../faq/FaqSearch";
+import LocationSearch from "../locations/LocationSearch";
+import ProfessionalsSearch from "../professionals/ProfessionalsSearch";
+import ProductsSearch from "../products/ProductsSearch";
+import ServicesSearch from "../services/ServicesSearch";
 
 const SearchExperience = () => {
   //retrieves the current vertical key
@@ -22,9 +26,12 @@ const SearchExperience = () => {
         <div className="mx-auto flex max-w-5xl flex-col">
           <SearchBar placeholder="Search"/>
           <VerticalNav />
-          {currentVertical === "faqs" ? (<VerticalSearch/>) :
+          {currentVertical === "faqs" ? (<FaqSearch/>) :
           //comment out below to add a new vertical
-          //  currentVertical === "REPLACE ME" ? (<REPLACE_ME/>) :
+           currentVertical === "locations" ? (<LocationSearch/>) :
+           currentVertical === "financial_professionals" ? (<ProfessionalsSearch/>) :
+           currentVertical === "financial_products" ? (<ProductsSearch/>) :
+           currentVertical === "services" ? (<ServicesSearch/>) :
            (<UniversalSearch />)}
         </div>
       </div>

@@ -124,6 +124,30 @@ export interface Coordinate {
 	longitude?: number,
 }
 
+export enum LinkType {
+	OTHER = "Other",
+	URL = "URL",
+	PHONE = "Phone",
+	EMAIL = "Email",
+}
+
+export interface Fins_primaryCTA {
+	label?: string,
+	linkType?: LinkType,
+	link?: string,
+}
+
+export interface EntityReference {
+	entityId: string,
+	name: string,
+}
+
+export interface Fins_secondaryCTA {
+	label?: string,
+	linkType?: LinkType,
+	link?: string,
+}
+
 export interface FeaturedMessage {
 	description?: string,
 	url?: string,
@@ -304,6 +328,13 @@ export default interface FinancialProfessional {
 	certifications?: string[],
 	cityCoordinate?: Coordinate,
 	closed?: boolean,
+	fins_jobTitle?: string,
+	fins_primaryCTA?: Fins_primaryCTA,
+	fins_relatedFaqs?: EntityReference[],
+	fins_relatedLocations?: EntityReference[],
+	fins_relatedProducts?: EntityReference[],
+	fins_relatedServices?: EntityReference[],
+	fins_secondaryCTA?: Fins_secondaryCTA,
 	displayCoordinate?: Coordinate,
 	dropoffCoordinate?: Coordinate,
 	emails?: string[],

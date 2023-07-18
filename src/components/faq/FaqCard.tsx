@@ -1,8 +1,10 @@
 // src/components/Card.tsx
 
 import * as React from "react";
+import { useState } from "react";
 import { CardProps } from "@yext/search-ui-react";
 import { provideSearchAnalytics } from "@yext/analytics";
+import { LexicalRichText } from "@yext/react-components";
 
 //replace with the vertical typescript interface this custom card applies to
 import FAQ from "../../types/faqs";
@@ -18,16 +20,15 @@ export const searchAnalytics = provideSearchAnalytics({
 
 const FaqCard = ({
     result,
-    //replace the interface FAQ with the typescript interface of your vertical
   }: CardProps<FAQ>) => {
     //pull in the relevant fields from your entity to display on the card
     const data: any = {
-        name: result.rawData.name,
-        answer: result.rawData.answer,
-        landingPageUrl: result.rawData.landingPageUrl
-        // category: result.rawData.c_category,
-        // cta1: result.rawData.c_primaryCTA,
-        // cta2: result.rawData.c_secondaryCTA
+        name: result.rawData.question,
+        answer: result.rawData.c_answerTest,
+        landingPageUrl: result.rawData.landingPageUrl,
+        category: result.rawData.fins_faqCategory,
+        cta1: result.rawData.fins_primaryCTA,
+        cta2: result.rawData.fins_secondaryCTA
     }
 
     //replace below with the appropriate vertical key
@@ -54,44 +55,27 @@ const FaqCard = ({
             queryId: queryId,
         })
     }
+    const [isCollapsed, setIsCollapsed] = useState(true);
 
-    return (
-        <div className="mb-4 justify-between rounded-lg border p-4 text-stone-900 shadow-sm">
-            <div className="body flex flex-col">
-                {data.landingPageUrl && (
-                    <a href={`${data.landingPageUrl}`} target = "_blank" rel="noreferrer">
-                        <div className="title text-lg font-semibold text-blue-700 hover:underline" onClick ={() => fireTitle(result.id || "")}>
-                            {data.name}
-                        </div>
-                    </a>
-                )}
-                <div className= "category-label flex gap-1 mt-2">
-                        {data.category && (
-                            <div className="flex rounded bg-gray-600 px-1 text-sm text-gray-100">
-                                {`${data.category}`}
-                            </div>
-                        )}
+    const handleToggle = () => {
+      setIsCollapsed(!isCollapsed);
+    };
+
+return (
+    <div className="mb-4 justify-between rounded-lg border p-4 text-stone-900 shadow-sm">
+        <div className="body flex flex-col">
+            {data.name && (
+                <a href={`${data.landingPageUrl}`} target = "_blank" rel="noreferrer">
+                    <div className="title text-lg font-semibold text-blue-700 hover:underline" onClick ={() => fireTitle(result.id || "")}>
+                        {data.name}
                     </div>
-                <div className="description py-2 flex justify-between">
-                    {data.answer}
-                    {/* <div className="ctas flex flex-col justify-center ml-4">
-                        {data.cta1.label && (
-                            <a href={`${data.cta1.link}`} target = "_blank" rel="noreferrer">
-                                <button className="cta1 whitespace-nowrap bg-primary text-white font-medium rounded-lg py-2 px-5 shadow mb-4 hover:bg-blue-400" onClick={() => fireClick(result.id || "", data.cta1.label)}>
-                                    {data.cta1.label}
-                                </button>
-                            </a>)}
-                        {data.cta2?.label && (
-                            <a href={`${data.cta2.link}`} target = "_blank" rel="noreferrer">
-                                <button className="cta2 whitespace-nowrap bg-primary text-white font-medium rounded-lg py-2 px-5 shadow hover:bg-blue-400" onClick={() => fireClick(result.id || "", data.cta2.label)}>
-                                    {data.cta2.label}
-                                </button>
-                            </a>)} */}
-                    {/* </div> */}
-                </div>
+                </a>
+            )}
+            <div className="description py-2 flex justify-between">
+           { <LexicalRichText serializedAST={JSON.stringify(data.answer.json)} />}
             </div>
         </div>
-    )
+    </div>
+)
 };
-
 export default FaqCard;

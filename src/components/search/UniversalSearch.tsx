@@ -3,12 +3,17 @@
 import * as React from "react";
 import {
   UniversalResults,
-  SpellCheck
+  SpellCheck,
+  StandardCard
   } from "@yext/search-ui-react";
 
 import FaqCard from "../faq/FaqCard";
 import { useSearchActions, useSearchState} from "@yext/search-headless-react";
 import { UNIVERSAL_LIMITS } from "../../common/consts";
+import LocationCard from "../locations/LocationCard";
+import ProfessionalsCard from "../professionals/ProfessionalsCard";
+import ServicesCard from "../services/ServicesCard";
+import ProductsCard from "../products/ProductsCard";
 
 const UniversalSearch = () => {
   const searchActions = useSearchActions();
@@ -31,10 +36,22 @@ const UniversalSearch = () => {
                       CardComponent: FaqCard
                   },
                 // uncomment below to add an additonal vertical configuration
-                //   [REPLACE_ME_VERTICAL_KEY]: {
-                //     label: "REPLACE ME VERTICAL NAME",
-                //     CardComponent: REPLACE_ME_VERTICAL_CARD
-                // },
+                  locations: {
+                    label: "Branches & ATMs",
+                    CardComponent: LocationCard
+                },
+                financial_professionals: {
+                  label: "Financial Professionals",
+                  CardComponent: ProfessionalsCard
+              },
+              financial_products: {
+                label: "Products",
+                CardComponent: ProductsCard
+            },
+            services: {
+              label: "Services",
+              CardComponent: ServicesCard
+          },
               }}/>
           {mostRecentSearch && universalResultsCount === 0 && (
             <div>

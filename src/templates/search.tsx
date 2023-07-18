@@ -36,8 +36,6 @@ export const getHeadConfig: GetHeadConfig<
 
 export const SEARCHER = provideHeadless({
   apiKey: apiKey,
-  // comment in the verticalKey if you are building a vertical-only search experience
-  // verticalKey: "REPLACE_ME_VERTICAL_KEY",
   experienceKey: experienceKey,
   locale: locale,
   experienceVersion: experienceVersion,

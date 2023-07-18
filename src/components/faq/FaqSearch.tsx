@@ -3,11 +3,11 @@
 import * as React from "react";
 import {
   VerticalResults,
-  SpellCheck,
   ResultsCount,
   Pagination,
   Facets,
-  StandardFacet
+  StandardFacet,
+  AppliedFilters
   } from "@yext/search-ui-react";
 
 import {
@@ -24,37 +24,29 @@ const FaqSearch = () => {
     const resultsCount =
         useSearchState((state) => state.vertical.resultsCount) ?? -1;
 
-  return (
-      <div className="vertical-search py-4">
-          <div className="spell-check">
-            <SpellCheck/>
-          </div>
-            {resultsCount > 0 && (
-              <>
-              <ResultsCount />
-              <div className="flex">
-                  <div className="mr-5 w-56 shrink-0">
-                    <div className="flex flex-col rounded border bg-zinc-100 p-4 shadow-sm">
-                        <Facets>
-                          <StandardFacet
-                          fieldId="c_category"
-                          transformOptions={(options) =>
-                            [...options].sort((a,b) =>
-                              a.displayName.localeCompare(b.displayName))
-                          }
-                          label="FAQ Category"
+        return (
+          <div className="flex flex-col items-center w-full min-h-full">
+              <div className='flex flex-col w-full my-8'>
+                <div className='w-full flex'>
+                  <div className='flex flex-col w-full items-center'>
+                    <div className='flex flex-col items-center justify-center w-full'>
+                      <div className='hidden md:flex justify-between w-full mb-1'>
+                        <div className='flex gap-2'>
+                          <ResultsCount 
+                            customCssClasses={{
+                              resultsCountContainer: "text-md font-normal px-0 py-1 m-0" 
+                            }}
                           />
-                        </Facets>
-                    </div>
-                  </div>
-                  <VerticalResults
-                  CardComponent={FaqCard}
-                  displayAllOnNoResults={false}
-                  />
-              </div>
-              </>
-            )}
-          {mostRecentSearch && resultsCount === 0 && (
+                          <AppliedFilters
+                            customCssClasses={{
+                              clearAllButton: "hidden",
+                              removableFilter: "bg-gray-100 rounded-sm border border-brand-gray-300 text-md px-2 py-1",
+                              appliedFiltersContainer: "m-0 p-0",
+                            }}
+                          />
+                        </div>
+                      </div> 
+                      {mostRecentSearch && resultsCount === 0 && (
             <div>
               {/* provide a no results message for searches that return no results  */}
               <p>
@@ -63,15 +55,26 @@ const FaqSearch = () => {
                 did not match any FAQs.
               </p>
             </div>
-          )}
-          <Pagination
-            customCssClasses={{
-              icon: "text-stone-900",
-              label: "text-stone-900",
-              selectedLabel: "text-blue-700 border-blue-700 bg-blue-100",
-            }}/>
-      </div>
-  );
-};
+          )}                      
+          <VerticalResults
+                        CardComponent={FaqCard}
+                        displayAllOnNoResults={true}
+                        customCssClasses={{
+                          verticalResultsContainer: "w-full"
+                        }}
+                      />
+                      <Pagination 
+                        customCssClasses={{
+                          paginationContainer: "bg-white w-fit rounded-sm",
+                          rightIconContainer: "rounded-r-sm",
+                          leftIconContainer: "rounded-l-sm"
+                        }}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        )}
 
 export default FaqSearch;

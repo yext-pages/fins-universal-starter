@@ -19,9 +19,24 @@ export const verticals: Vertical[]= [
       entityType: "faq"
 
     },
-    // {
-    //     //comment in to add additional vertical
-    //     showInNav: true,
-    //     label: "All"
-    //   },
+    {
+        showInNav: true,
+        label: "Branches & ATMs",
+        key: "locations"
+      },
+      {
+        showInNav: true,
+        label: "Financial Professionals",
+        key: "financial_professionals"
+      },
+      {
+        showInNav: true,
+        label: "Financial Products",
+        key: "financial_products"
+      },
+      {
+        showInNav: true,
+        label: "Services",
+        key: "services"
+      },
 ]
