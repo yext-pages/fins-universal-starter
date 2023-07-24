@@ -72,7 +72,7 @@ return (
                 </a>
             )}
             <div className="description py-2 flex justify-between">
-           { <LexicalRichText serializedAST={JSON.stringify(data.answer.json)} />}
+            {data.answer}
             </div>
         </div>
     </div>

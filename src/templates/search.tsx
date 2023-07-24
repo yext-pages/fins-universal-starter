@@ -20,7 +20,7 @@ import SearchExperience from "../components/search/SearchExperience";
 import {apiKey, experienceKey, locale, experienceVersion} from "../common/consts";
 
 export const getPath: GetPath<TemplateProps> = () => {
-  return "search";
+  return "index.html";
 };
 
 export const getHeadConfig: GetHeadConfig<
