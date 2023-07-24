@@ -56,7 +56,7 @@ const LocationCard = ({
   }
     
   return (
-      <div className="mb-4 w-auto justify-between rounded-lg border p-6 text-stone-900 shadow-sm overflow-hidden">
+      <div className="mb-4 w-auto justify-between rounded-lg border p-2 text-stone-900 shadow-sm overflow-hidden">
         <div className="body flex flex-col">
         <div className="w-full bg-neutral-100 h-32 rounded-full flex flex-row">
             <div className="ml-4 mr-10">

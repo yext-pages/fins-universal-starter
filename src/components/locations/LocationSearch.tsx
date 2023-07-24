@@ -75,16 +75,16 @@ const resultsCount =
     </p>
   </div>
 )}      
-            <div className="h-80">
-            <MapboxMap
-            mapboxAccessToken="pk.eyJ1IjoiaHJpY2gwNiIsImEiOiJjbGg5Ym5wancwNXR0M2pvNzVjOG5rYmJ4In0.l3dQnS7P6byBu5hGgKgVPQ"
-            />
-            </div>        
+        <div className="h-80 w-full">
+        <MapboxMap
+        mapboxAccessToken="pk.eyJ1IjoiaHJpY2gwNiIsImEiOiJjbGg5Ym5wancwNXR0M2pvNzVjOG5rYmJ4In0.l3dQnS7P6byBu5hGgKgVPQ"
+        />
+    
 <VerticalResults
       CardComponent={LocationCard}
       displayAllOnNoResults={true}
       customCssClasses={{
-        verticalResultsContainer: "w-full"
+        verticalResultsContainer: "w-full my-2"
       }}
     />
     <Pagination 
@@ -94,6 +94,7 @@ const resultsCount =
         leftIconContainer: "rounded-l-sm"
       }}
       />
+    </div>    
     </div>
   </div>
 </div>
