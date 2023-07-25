@@ -1,10 +1,9 @@
 // src/components/Card.tsx
 
 import * as React from "react";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { CardProps } from "@yext/search-ui-react";
 import { provideSearchAnalytics } from "@yext/analytics";
-import { LexicalRichText } from "@yext/react-components";
 
 //replace with the vertical typescript interface this custom card applies to
 import FAQ from "../../types/faqs";
@@ -17,6 +16,9 @@ export const searchAnalytics = provideSearchAnalytics({
   experienceVersion: experienceVersion,
   businessId: businessId
 })
+
+//replace below with the appropriate vertical key
+const verticalKey = 'faqs'
 
 const FaqCard = ({
     result,
@@ -31,8 +33,19 @@ const FaqCard = ({
         cta2: result.rawData.fins_secondaryCTA
     }
 
-    //replace below with the appropriate vertical key
-    const verticalKey = 'faqs'
+// change to the field name that contains html string
+    const htmlFieldName = 'c_answerTest';
+
+      
+      function renderHTMLContent(htmlContent: { __html: string } | undefined) {
+        if ( htmlContent )
+        {
+          return <div className="reset-style" dangerouslySetInnerHTML={htmlContent} />;
+        }
+        return null;
+      }
+      const html: string = result.rawData?.[htmlFieldName]?.html;
+      const htmlContent = useMemo(() => { return { __html: html }; }, [html]);
 
     //analytics configuration for the card
     const queryId = useSearchState((state)=>state.query.queryId) || "";
@@ -61,6 +74,8 @@ const FaqCard = ({
       setIsCollapsed(!isCollapsed);
     };
 
+
+
 return (
     <div className="mb-4 justify-between rounded-lg border p-4 text-stone-900 shadow-sm">
         <div className="body flex flex-col">
@@ -72,7 +87,7 @@ return (
                 </a>
             )}
             <div className="description py-2 flex justify-between">
-            {data.answer}
+            {renderHTMLContent(htmlContent)}
             </div>
         </div>
     </div>
