@@ -76,21 +76,58 @@ const FaqCard = ({
 
 
 
-return (
-    <div className="mb-4 justify-between rounded-lg border p-4 text-stone-900 shadow-sm">
-        <div className="body flex flex-col">
+    return (
+        <div className="mb-4 justify-between rounded-lg border p-4 text-stone-900 shadow-sm">
+          <div className="body flex flex-col">
             {data.name && (
-                <a href={`${data.landingPageUrl}`} target = "_blank" rel="noreferrer">
-                    <div className="title text-lg font-semibold text-blue-700 hover:underline" onClick ={() => fireTitle(result.id || "")}>
-                        {data.name}
-                    </div>
-                </a>
+              <div className="title text-lg font-semibold text-blue-700 relative">
+                {data.name}
+                <button
+                  onClick={handleToggle}
+                  className="arrow absolute top-1/2 right-4 transform -translate-y-1/2 focus:outline-none"
+                >
+                  {isCollapsed ? (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  ) : (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 15l7-7 7 7"
+                      />
+                    </svg>
+                  )}
+                </button>
+              </div>
             )}
-            <div className="description py-2 flex justify-between">
-            {renderHTMLContent(htmlContent)}
-            </div>
+            {!isCollapsed && (
+              <div className="description py-2 flex justify-between">
+                {renderHTMLContent(htmlContent)}
+              </div>
+            )}
+          </div>
         </div>
-    </div>
-)
-};
-export default FaqCard;
+      );
+    };
+    
+    export default FaqCard;
