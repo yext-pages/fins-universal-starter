@@ -45,6 +45,7 @@ export interface Fins_secondaryCTA {
 
 export default interface Faq {
 	answer?: string,
+	answerV2?: any,
 	landingPageUrl?: string,
 	nudgeEnabled?: boolean,
 	primaryConversationContact?: any,
@@ -52,7 +53,6 @@ export default interface Faq {
 	slug?: string,
 	logo?: ComplexImage,
 	name: string,
-	c_answerTest?: any,
 	fins_faqCategory?: string[],
 	fins_primaryCTA?: Fins_primaryCTA,
 	fins_relatedLocations?: EntityReference[],

@@ -100,6 +100,12 @@ export interface Image {
 	alternateText?: string,
 }
 
+export enum CovidVaccinesOffered {
+	PFIZER = "Pfizer",
+	MODERNA = "Moderna",
+	JOHNSON___JOHNSON = "Johnson & Johnson",
+}
+
 export enum PickupAndDeliveryServices {
 	IN_STORE_PICKUP = "In-Store Pickup",
 	CURBSIDE_PICKUP = "Curbside Pickup",
@@ -134,22 +140,16 @@ export interface Coordinate {
 	longitude?: number,
 }
 
+export interface EntityReference {
+	entityId: string,
+	name: string,
+}
+
 export enum LinkType {
 	OTHER = "Other",
 	URL = "URL",
 	PHONE = "Phone",
 	EMAIL = "Email",
-}
-
-export interface C_cta {
-	label?: string,
-	linkType?: LinkType,
-	link?: string,
-}
-
-export interface EntityReference {
-	entityId: string,
-	name: string,
 }
 
 export interface Fins_primaryCTA {
@@ -346,6 +346,20 @@ export interface Location {
 	brunchHours?: Hours,
 	covid19InformationUrl?: string,
 	covidMessaging?: string,
+	covidTestAppointmentUrl?: string,
+	covidTestingAppointmentRequired?: boolean,
+	covidTestingDriveThroughSite?: boolean,
+	covidTestingIsFree?: boolean,
+	covidTestingPatientRestrictions?: boolean,
+	covidTestingReferralRequired?: boolean,
+	covidTestingSiteInstructions?: string,
+	covidVaccineAppointmentRequired?: boolean,
+	covidVaccineDriveThroughSite?: boolean,
+	covidVaccineInformationUrl?: string,
+	covidVaccinePatientRestrictions?: boolean,
+	covidVaccineReferralRequired?: boolean,
+	covidVaccineSiteInstructions?: string,
+	covidVaccinesOffered?: CovidVaccinesOffered[],
 	deliveryHours?: Hours,
 	deliveryUrl?: string,
 	dineInHours?: Hours,
@@ -386,9 +400,7 @@ export interface Location {
 	categories?: any,
 	cityCoordinate?: Coordinate,
 	closed?: boolean,
-	c_about_image?: Image,
-	c_cta?: C_cta,
-	c_featuredFAQs?: EntityReference[],
+	fins_featuredArticles?: EntityReference[],
 	fins_primaryCTA?: Fins_primaryCTA,
 	fins_relatedFaqs?: EntityReference[],
 	fins_relatedProducts?: EntityReference[],
@@ -479,6 +491,7 @@ export interface Atm {
 	categories?: any,
 	cityCoordinate?: Coordinate,
 	closed?: boolean,
+	fins_featuredArticles?: EntityReference[],
 	fins_primaryCTA?: Fins_primaryCTA,
 	fins_relatedFaqs?: EntityReference[],
 	fins_relatedProducts?: EntityReference[],

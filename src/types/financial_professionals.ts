@@ -124,6 +124,11 @@ export interface Coordinate {
 	longitude?: number,
 }
 
+export interface EntityReference {
+	entityId: string,
+	name: string,
+}
+
 export enum LinkType {
 	OTHER = "Other",
 	URL = "URL",
@@ -135,11 +140,6 @@ export interface Fins_primaryCTA {
 	label?: string,
 	linkType?: LinkType,
 	link?: string,
-}
-
-export interface EntityReference {
-	entityId: string,
-	name: string,
 }
 
 export interface Fins_secondaryCTA {
@@ -328,6 +328,7 @@ export default interface FinancialProfessional {
 	certifications?: string[],
 	cityCoordinate?: Coordinate,
 	closed?: boolean,
+	fins_featuredArticles?: EntityReference[],
 	fins_jobTitle?: string,
 	fins_primaryCTA?: Fins_primaryCTA,
 	fins_relatedFaqs?: EntityReference[],
