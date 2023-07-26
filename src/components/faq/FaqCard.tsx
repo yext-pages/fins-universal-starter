@@ -4,11 +4,9 @@ import * as React from "react";
 import { useMemo, useState } from "react";
 import { CardProps } from "@yext/search-ui-react";
 import { provideSearchAnalytics } from "@yext/analytics";
-
-
+import '../../styles/resetStyles.css';
 //replace with the vertical typescript interface this custom card applies to
 import FAQ from "../../types/faqs";
-
 import { experienceKey, experienceVersion, businessId } from "../../common/consts";
 import { useSearchState } from "@yext/search-headless-react";
 
@@ -42,12 +40,11 @@ const FaqCard = ({
       description: string,
       [htmlFieldName]: { html: string }
     }
-      
+  
       function renderHTMLContent(htmlContent: { __html: string } | undefined) {
         if ( htmlContent )
         {
-          return <div className="reset-style" dangerouslySetInnerHTML={htmlContent} />;
-        }
+          return <div className="reset-style" dangerouslySetInnerHTML={htmlContent} />;        }
         return null;
       }
       const html: string = result.rawData?.[htmlFieldName]?.html;
@@ -80,7 +77,7 @@ const FaqCard = ({
       setIsCollapsed(!isCollapsed);
     };
 
-
+console.log(data)
 
     return (
         <div className="mb-4 justify-between rounded-lg border p-4 text-stone-900 shadow-sm">
